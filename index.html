@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & JavaScript Animation Project</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Title -->
+        <h1>CSS3 & JavaScript Animation Demo</h1>
+        
+        <!-- PART 1: CSS Only Animations -->
+        <section class="section">
+            <h2>Part 1: CSS Transitions & Animations</h2>
+            
+            <!-- Button hover effects using CSS transitions -->
+            <div class="button-group">
+                <button class="btn hover-scale">Hover to Scale</button>
+                <button class="btn hover-color">Hover to Change Color</button>
+                <button class="btn hover-glow">Hover to Glow</button>
+            </div>
+            
+            <!-- Continuous animations using CSS keyframes -->
+            <div class="animation-demo">
+                <div class="box bounce">Bouncing</div>
+                <div class="box spin">Spinning</div>
+                <div class="box fade">Fading</div>
+            </div>
+        </section>
+
+        <!-- PART 2: JavaScript Functions Demo -->
+        <section class="section">
+            <h2>Part 2: JavaScript Functions</h2>
+            
+            <!-- Display area for function results -->
+            <div id="result-display">Function results will appear here</div>
+            
+            <!-- Buttons to trigger JavaScript functions -->
+            <div class="button-group">
+                <button onclick="simpleFunction()">Simple Function</button>
+                <button onclick="functionWithParams('Hello', 'World')">Function with Parameters</button>
+                <button onclick="showReturnValue()">Function with Return Value</button>
+                <button onclick="demonstrateScope()">Show Scope Demo</button>
+            </div>
+        </section>
+
+        <!-- PART 3: JavaScript + CSS Integration -->
+        <section class="section">
+            <h2>Part 3: JavaScript Controls CSS Animations</h2>
+            
+            <!-- Element that will be animated by JavaScript -->
+            <div id="animated-box" class="interactive-box">
+                Click buttons below to animate me!
+            </div>
+            
+            <!-- Control buttons -->
+            <div class="button-group">
+                <button onclick="slideBox()">Slide Animation</button>
+                <button onclick="growBox()">Grow Animation</button>
+                <button onclick="colorBox()">Change Color</button>
+                <button onclick="resetBox()">Reset</button>
+            </div>
+            
+            <!-- Card flip example -->
+            <div id="flip-card" class="card" onclick="flipCard()">
+                <div class="card-content">
+                    <div class="front">Click to flip!</div>
+                    <div class="back">JavaScript did this!</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
