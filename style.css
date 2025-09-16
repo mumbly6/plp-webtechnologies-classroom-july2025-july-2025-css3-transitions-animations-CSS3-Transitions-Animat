@@ -1,0 +1,311 @@
+
+
+/* ===== BASIC RESET AND LAYOUT ===== */
+/* This section sets up the basic page styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: #333;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #0984e3;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #74b9ff;
+    padding-bottom: 10px;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+/* ===== PART 1: CSS TRANSITIONS (Hover Effects) ===== */
+/* CONCEPT: CSS Transitions make changes smooth over time */
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+/* Base button style with transition */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #74b9ff;
+    color: white;
+    
+    /* TRANSITION: This is the key! Makes ALL changes smooth over 0.3 seconds */
+    transition: all 0.3s ease;
+    
+    /* transition breakdown:
+       - 'all' = apply to all CSS properties that change
+       - '0.3s' = take 0.3 seconds to complete the change
+       - 'ease' = start slow, speed up, then slow down (natural feeling)
+    */
+}
+
+/* Hover effect 1: Scale transformation */
+.hover-scale:hover {
+    transform: scale(1.1);  /* Makes button 10% bigger */
+    box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);  /* Adds shadow */
+    
+    /* Because of the transition above, this change happens smoothly! */
+}
+
+/* Hover effect 2: Color change and vertical movement */
+.hover-color {
+    background: #00b894;  /* Different starting color */
+}
+
+.hover-color:hover {
+    background: #00a085;  /* Darker green on hover */
+    transform: translateY(-2px);  /* Moves button up 2 pixels */
+}
+
+/* Hover effect 3: Glow effect */
+.hover-glow {
+    background: #e17055;  /* Orange background */
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(225, 112, 85, 0.6);  /* Glowing shadow */
+    transform: scale(1.05);  /* Slight size increase */
+}
+
+/* ===== PART 1: CSS KEYFRAME ANIMATIONS ===== */
+/* CONCEPT: @keyframes define animations that run automatically */
+
+.animation-demo {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Animation 1: Bouncing effect */
+.bounce {
+    background: #fd79a8;  /* Pink background */
+    /* ANIMATION: Apply the bounceAnimation keyframes */
+    animation: bounceAnimation 2s ease-in-out infinite;
+    
+    /* animation breakdown:
+       - bounceAnimation = the name of our @keyframes
+       - 2s = each bounce cycle takes 2 seconds
+       - ease-in-out = smooth acceleration/deceleration
+       - infinite = repeat forever
+    */
+}
+
+/* Define what bounceAnimation does */
+@keyframes bounceAnimation {
+    0% {
+        transform: translateY(0);    /* Start: normal position */
+    }
+    50% {
+        transform: translateY(-30px); /* Middle: 30px higher */
+    }
+    100% {
+        transform: translateY(0);    /* End: back to normal */
+    }
+}
+
+/* Animation 2: Spinning effect */
+.spin {
+    background: #fdcb6e;  /* Yellow background */
+    animation: spinAnimation 3s linear infinite;
+    
+    /* linear = constant speed (no acceleration/deceleration) */
+}
+
+@keyframes spinAnimation {
+    from {
+        transform: rotate(0deg);    /* Start: no rotation */
+    }
+    to {
+        transform: rotate(360deg);  /* End: full rotation */
+    }
+}
+
+/* Animation 3: Fading effect */
+.fade {
+    background: #6c5ce7;  /* Purple background */
+    animation: fadeAnimation 3s ease-in-out infinite;
+}
+
+@keyframes fadeAnimation {
+    0% {
+        opacity: 1;      /* Start: fully visible */
+    }
+    50% {
+        opacity: 0.3;    /* Middle: almost transparent */
+    }
+    100% {
+        opacity: 1;      /* End: fully visible again */
+    }
+}
+
+/* ===== PART 2: DISPLAY AREA FOR JAVASCRIPT RESULTS ===== */
+/* This styles the area where JavaScript will show function results */
+
+#result-display {
+    background: #f8f9fa;        /* Light gray background */
+    border: 2px solid #dee2e6;  /* Gray border */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    min-height: 60px;           /* Minimum height so it's always visible */
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ===== PART 3: JAVASCRIPT-CONTROLLED ANIMATIONS ===== */
+/* CONCEPT: JavaScript will add/remove these classes to trigger animations */
+
+.interactive-box {
+    width: 150px;
+    height: 150px;
+    background: #74b9ff;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    
+    /* TRANSITION: Makes JavaScript changes smooth */
+    transition: all 0.5s ease;
+    
+    /* This means when JavaScript adds/removes classes,
+       the changes will animate smoothly over 0.5 seconds */
+}
+
+/* Classes that JavaScript will add/remove */
+/* JavaScript uses classList.add() and classList.remove() with these */
+
+.slide-right {
+    transform: translateX(100px);  /* Moves element 100px to the right */
+}
+
+.grow {
+    transform: scale(1.5);  /* Makes element 50% bigger */
+}
+
+.color-change {
+    background: #e17055;  /* Changes to orange color */
+}
+
+/* ===== CARD FLIP ANIMATION (3D Effect) ===== */
+/* This demonstrates more complex 3D CSS transforms */
+
+.card {
+    width: 200px;
+    height: 120px;
+    margin: 30px auto;
+    perspective: 1000px;  /* IMPORTANT: Enables 3D transformations */
+    cursor: pointer;
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s ease;  /* Smooth flip animation */
+    transform-style: preserve-3d;     /* Maintains 3D positioning */
+}
+
+/* Class that JavaScript will toggle */
+.flipped .card-content {
+    transform: rotateY(180deg);  /* Flips the card 180 degrees */
+}
+
+/* Front and back of the card */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;  /* Hides the back when facing away */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.front {
+    background: #74b9ff;  /* Blue front */
+}
+
+.back {
+    background: #00b894;           /* Green back */
+    transform: rotateY(180deg);    /* Initially flipped so it's hidden */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Makes the layout work on smaller screens */
+
+@media (max-width: 600px) {
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .animation-demo {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+}
+
